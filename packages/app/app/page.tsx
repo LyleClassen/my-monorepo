@@ -1,23 +1,25 @@
-import { PrismaClient, TEST_TEXT } from "@/../libs";
-import Image from "next/image";
+import { PrismaClient, TEST_TEXT } from '@/../libs';
+import Image from 'next/image';
 
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
-
-const prisma = new PrismaClient(); 
-export default function Home() {
-  
+const prisma = new PrismaClient();
+export default async function Home() {
   const connectDB = async () => {
-   await  prisma.$connect();
-  }
-  connectDB()
- 
+    await prisma.$connect();
+  };
+
+  connectDB();
+
+  const users = async () => await prisma.user.findMany();
 
   return (
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-         {TEST_TEXT}
+          {(await users()).map((user) => (
+            <div key={user.id}>{user.name}</div>
+          ))}
         </p>
         <div>
           <a
@@ -25,7 +27,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
+            By{' '}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
