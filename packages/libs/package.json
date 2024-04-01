@@ -1,0 +1,14 @@
+{
+  "name": "libs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "seed": "npx ts-node prisma/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.11.0",
+    "prisma": "^5.11.0"
+  }
+  
+}

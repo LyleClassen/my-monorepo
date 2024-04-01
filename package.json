@@ -1,0 +1,12 @@
+{
+  "name": "my-monorepo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LyleClassen/my-monorepo.git",
+  "author": "Lyle Classen <classenlyle@gmail.com>",
+  "license": "MIT",
+  "private":"true",
+  "workspaces":[
+    "packages/*"
+  ]
+}
